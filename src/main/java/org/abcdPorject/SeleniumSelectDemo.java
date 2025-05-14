@@ -30,6 +30,8 @@ public class SeleniumSelectDemo {
         driver.findElement(By.id("address2")).sendKeys("T2111");
         driver.findElement(By.id("city")).click();
         List<WebElement> listWebElement= driver.findElements(By.xpath("//select[@id='city']//option"));
+        WebDriverWait wt=new WebDriverWait(driver,Duration.ofSeconds(2));
+        wt.until(ExpectedConditions.visibilityOfAllElements(listWebElement));
         for(int i=0;i<listWebElement.size();i++){
             if(listWebElement.get(i).getText().equalsIgnoreCase(citNm)){
                 listWebElement.get(i).click();
@@ -37,17 +39,13 @@ public class SeleniumSelectDemo {
             else{
                 System.out.println("City Name not found :)");
             }
-
         }
 //        Select selectCity=new Select(city);
 //        selectCity.selectByValue(citNm);
-
 //        String xpt="//option[@value='Chicago']";
         citNm="//option[@value='"+citNm+"']";
 //        driver.findElement(By.xpath('"'+citNm+'"')).click();////option[@value='"+citNm+"']-->"//option[@value='"+citNm+"']"
 //        driver.findElement(By.id("state")).click();
-
-
 
         Select selectState=new Select(driver.findElement(By.cssSelector("#state")));
         selectState.selectByIndex(1);
@@ -59,6 +57,5 @@ public class SeleniumSelectDemo {
 //      driver.findElement(By.cssSelector(".close-btn")).click(); -->Using css selector
         driver.findElement(By.xpath("//button[@class='close-btn']")).click(); //-->Using xpath
         driver.findElement(By.partialLinkText("navigate back")).click();
-
     }
 }

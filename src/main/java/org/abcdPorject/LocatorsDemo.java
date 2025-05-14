@@ -3,13 +3,30 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.beans.Visibility;
+import java.time.Duration;
+
 public class LocatorsDemo {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         WebDriver driver = new ChromeDriver();
 //      WebDriver edgeDriver= new EdgeDriver(); --> to open edge browser
         driver.manage().window().maximize();
         driver.get("https://techguyy1.github.io/techguys/");
 //      Identifying element by using different types of selector
+// Adding implicit wait
+        //Global wait
+        //wait before throwing any exception
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(4));
+
+        //Explicit Wait
+        WebDriverWait wt=new WebDriverWait(driver, Duration.ofSeconds(3));
+        wt.until(ExpectedConditions.visibilityOf(driver.findElement(By.id("practice-tab"))));
+wt.until(ExpectedConditions.alertIsPresent());
+        //Thread .sleep
+        Thread.sleep(2000);
         driver.findElement(By.id("practice-tab")).click();
         driver.findElement(By.cssSelector("#userDetails-1")).click();
         driver.findElement(By.cssSelector(".fst-name")).sendKeys("Pavankumar");
