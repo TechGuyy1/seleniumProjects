@@ -28,7 +28,8 @@ public class SyncWaitsDemo {
         wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("(//span[contains(text(),'picks')])[1]")));
         driver.findElement(By.xpath("(//span[contains(text(),'picks')])[1]")).click();
          //Thread.sleep()
-         Thread.sleep(2000);//-->
+
+        Thread.sleep(2000);//-->
          //Fluent wait --> Check the visibility of elements  in intervals
 
     }
