@@ -1,6 +1,7 @@
 package org.abcdPorject;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.io.FileHandler;
 
 import java.io.File;
@@ -23,12 +24,16 @@ public class ScrollDemoUsingJsExecutor {
        File destPath=new File(filePath);
         try {
             FileHandler.copy(screen,destPath);
+            System.out.println("Screenshotsave successfully");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
     public static void main(String[] args) throws InterruptedException {
-        WebDriver driver=new ChromeDriver();
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--headless");
+
+        WebDriver driver=new ChromeDriver(options);
         driver.get("https://www.tradingview.com/");
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
