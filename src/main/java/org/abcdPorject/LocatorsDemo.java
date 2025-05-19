@@ -35,6 +35,7 @@ wt.until(ExpectedConditions.alertIsPresent());
         driver.findElement(By.id("address1")).sendKeys("Bagmanae Layout");
         driver.findElement(By.id("address2")).sendKeys("T2111");
         driver.findElement(By.id("city")).click();
+        driver.findElement(By.tagName("a"));
         driver.findElement(By.xpath("//option[@value='Chicago']")).click();
         driver.findElement(By.id("state")).click();
         driver.findElement(By.xpath("//option[@value='NY']")).click();
@@ -44,7 +45,8 @@ wt.until(ExpectedConditions.alertIsPresent());
         driver.findElement(By.xpath("//button[@type='submit']")).click();
 //      driver.findElement(By.cssSelector(".close-btn")).click(); -->Using css selector
         driver.findElement(By.xpath("//button[@class='close-btn']")).click(); //-->Using xpath
-        driver.findElement(By.partialLinkText("navigate back")).click();
+        driver.findElement(By.linkText("navigate back to home")).click();
+
 
     }
 }
