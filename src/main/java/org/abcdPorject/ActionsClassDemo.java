@@ -18,9 +18,10 @@ public class ActionsClassDemo {
         this.driver=driver;
     }
     public void clickOnComputersOptions(String option){
-//        driver.findElement(By.xpath(" (//ul//a[@href='/"+option+"'])[1]")).click();
+//        driver.findElement(By.xpath("(//button[@aria-label='Search'])[1]")).click();
         driver.findElement(By.xpath("(//a[contains(text(),'"+option+"')])[1]")).click();
 //        (//a[contains(text(),'Accessories')])[1]
+
 
     }
     public static void main(String[] args) {
